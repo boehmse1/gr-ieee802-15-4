@@ -40,5 +40,5 @@ install(FILES
     rime_stack.h
     zeropadding_b.h
     zeropadding_removal_b.h
-    DESTINATION include/ieee802_15_4
+    phy_msg_handler.h DESTINATION include/ieee802_15_4
 )

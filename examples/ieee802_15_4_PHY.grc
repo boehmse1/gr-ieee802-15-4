@@ -1,0 +1,317 @@
+options:
+  parameters:
+    author: semulate
+    category: '[IEEE802.15.4]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: hb
+    hier_block_src_path: '.:'
+    id: ieee802_15_4_PHY
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: IEEE802.15.4 PHY
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [26, 20]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: bandwidth
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: Bandwidth (Hz)
+    short_id: ''
+    type: intx
+    value: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [496, 16]
+    rotation: 0
+    state: enabled
+- name: center_freq
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: Center Freq (Hz)
+    short_id: ''
+    type: intx
+    value: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [235, 16]
+    rotation: 0
+    state: enabled
+- name: debug
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: Debug
+    short_id: ''
+    type: intx
+    value: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [822, 15]
+    rotation: 0
+    state: enabled
+- name: digital_probe_mpsk_snr_est_c_0
+  id: digital_probe_mpsk_snr_est_c
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha: '0.001'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    msg_nsamples: '100'
+    type: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [204, 193]
+    rotation: 0
+    state: enabled
+- name: ieee802_15_4_oqpsk_phy_0
+  id: ieee802_15_4_oqpsk_phy
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [629, 322]
+    rotation: 0
+    state: enabled
+- name: ieee802_15_4_phy_msg_handler_0
+  id: ieee802_15_4_phy_msg_handler
+  parameters:
+    affinity: ''
+    alias: ''
+    bw0: bandwidth
+    center_freq0: center_freq
+    comment: ''
+    debug: 'False'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    rxg: rx_gain
+    samp_rate: samp_rate
+    txg: tx_gain
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [601, 145]
+    rotation: 0
+    state: true
+- name: pad_sink_0
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: sduout
+    num_streams: '1'
+    optional: 'False'
+    type: message
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [991, 230]
+    rotation: 0
+    state: true
+- name: pad_sink_1
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: txout
+    num_streams: '1'
+    optional: 'False'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [992, 318]
+    rotation: 0
+    state: true
+- name: pad_sink_2
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: txctrl
+    num_streams: '1'
+    optional: 'False'
+    type: message
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [993, 131]
+    rotation: 0
+    state: true
+- name: pad_sink_3
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: rxctrl
+    num_streams: '1'
+    optional: 'False'
+    type: message
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [996, 178]
+    rotation: 0
+    state: true
+- name: pad_source_0
+  id: pad_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: sduin
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_streams: '1'
+    optional: 'False'
+    type: message
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [45, 156]
+    rotation: 0
+    state: true
+- name: pad_source_1
+  id: pad_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: rxin
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_streams: '1'
+    optional: 'False'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [46, 318]
+    rotation: 0
+    state: true
+- name: rx_gain
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: 'RX Gain '
+    short_id: ''
+    type: intx
+    value: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [614, 16]
+    rotation: 0
+    state: enabled
+- name: samp_rate
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: Sampling Rate
+    short_id: ''
+    type: long
+    value: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [373, 16]
+    rotation: 0
+    state: enabled
+- name: tx_gain
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: TX Gain
+    short_id: ''
+    type: intx
+    value: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [727, 16]
+    rotation: 0
+    state: enabled
+
+connections:
+- [digital_probe_mpsk_snr_est_c_0, signal, ieee802_15_4_phy_msg_handler_0, signal_strength]
+- [ieee802_15_4_oqpsk_phy_0, '0', pad_sink_1, '0']
+- [ieee802_15_4_oqpsk_phy_0, rxout, ieee802_15_4_phy_msg_handler_0, phy_in]
+- [ieee802_15_4_phy_msg_handler_0, conf_out, pad_sink_0, in]
+- [ieee802_15_4_phy_msg_handler_0, data_out, ieee802_15_4_oqpsk_phy_0, txin]
+- [ieee802_15_4_phy_msg_handler_0, manag_rx_out, pad_sink_3, in]
+- [ieee802_15_4_phy_msg_handler_0, manag_tx_out, pad_sink_2, in]
+- [pad_source_0, out, ieee802_15_4_phy_msg_handler_0, tcp_in]
+- [pad_source_1, '0', digital_probe_mpsk_snr_est_c_0, '0']
+- [pad_source_1, '0', ieee802_15_4_oqpsk_phy_0, '0']
+
+metadata:
+  file_format: 1

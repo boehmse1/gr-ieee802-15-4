@@ -1,0 +1,316 @@
+options:
+  parameters:
+    author: semulate
+    category: '[IEEE802.15.4]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: transceiver_PCAPNG_OQPSK
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: IEEE 802.15.4 Transceiver using OQPSK PHY and PCAPNG Connection
+    window_size: 1280, 1024
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [16, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: bandwidth
+  id: variable
+  parameters:
+    comment: ''
+    value: '3000000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [17, 137]
+    rotation: 0
+    state: enabled
+- name: frequency
+  id: variable
+  parameters:
+    comment: ''
+    value: '2480000000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [185, 83]
+    rotation: 0
+    state: enabled
+- name: frequency_0
+  id: variable
+  parameters:
+    comment: ''
+    value: 2405e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [96, 83]
+    rotation: 0
+    state: enabled
+- name: rx_gain
+  id: variable
+  parameters:
+    comment: ''
+    value: '60'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [175, 137]
+    rotation: 0
+    state: enabled
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '4000000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [17, 83]
+    rotation: 0
+    state: enabled
+- name: tx_gain
+  id: variable
+  parameters:
+    comment: ''
+    value: '60'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [96, 137]
+    rotation: 0
+    state: enabled
+- name: PHY_SDU_interpreter_0
+  id: PHY_SDU_interpreter
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    parameter_0: '1'
+    parameter_2: '1'
+    parameter_3: '1'
+    parameter_4: '1'
+    parameter_4_0: '0'
+    parameter_s: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [420, 245]
+    rotation: 180
+    state: true
+- name: analog_sig_source_x_0
+  id: analog_sig_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: '1'
+    comment: ''
+    freq: '1'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    offset: '0'
+    phase: '0'
+    samp_rate: samp_rate
+    type: complex
+    waveform: analog.GR_COS_WAVE
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [95, 233]
+    rotation: 0
+    state: true
+- name: blocks_file_sink_0_0
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: ''
+    file: /tmp/test.pcapng
+    type: byte
+    unbuffered: 'True'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [901, 150]
+    rotation: 0
+    state: enabled
+- name: blocks_message_debug_0
+  id: blocks_message_debug
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [737, 39]
+    rotation: 0
+    state: enabled
+- name: blocks_null_sink_0
+  id: blocks_null_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    bus_structure_sink: '[[0,],]'
+    comment: ''
+    num_inputs: '1'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [711, 409]
+    rotation: 0
+    state: true
+- name: blocks_socket_pdu_0_0
+  id: blocks_socket_pdu
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    host: 127.0.0.1
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    mtu: '512'
+    port: '4242'
+    tcp_no_delay: 'False'
+    type: TCP_CLIENT
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [421, 44]
+    rotation: 180
+    state: enabled
+- name: foo_wireshark_connector_0
+  id: foo_wireshark_connector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    debug: 'False'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    tech: '147'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [691, 154]
+    rotation: 0
+    state: true
+- name: ieee802_15_4_oqpsk_phy_0
+  id: ieee802_15_4_oqpsk_phy
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [409, 409]
+    rotation: 0
+    state: enabled
+- name: ieee802_15_4_phy_msg_handler_0
+  id: ieee802_15_4_phy_msg_handler
+  parameters:
+    affinity: ''
+    alias: ''
+    bw0: '0'
+    center_freq0: '0'
+    comment: ''
+    debug: 'False'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    rxg: '0'
+    samp_rate: '0'
+    txg: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [839, 261]
+    rotation: 180
+    state: true
+- name: note_1
+  id: note
+  parameters:
+    alias: ''
+    comment: ''
+    note: 'you can connect to the Socket PDU with: ''nc -u localhost 52002'''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [202, 22]
+    rotation: 0
+    state: enabled
+- name: pcapng_connector_0
+  id: pcapng_connector
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [422, 147]
+    rotation: 0
+    state: true
+
+connections:
+- [PHY_SDU_interpreter_0, conf_out, pcapng_connector_0, PDUin]
+- [PHY_SDU_interpreter_0, data_out, ieee802_15_4_oqpsk_phy_0, txin]
+- [PHY_SDU_interpreter_0, manag_rx_out, blocks_message_debug_0, print]
+- [PHY_SDU_interpreter_0, manag_tx_out, blocks_message_debug_0, print]
+- [analog_sig_source_x_0, '0', PHY_SDU_interpreter_0, '0']
+- [analog_sig_source_x_0, '0', ieee802_15_4_oqpsk_phy_0, '0']
+- [blocks_socket_pdu_0_0, pdus, pcapng_connector_0, TCPin]
+- [foo_wireshark_connector_0, '0', blocks_file_sink_0_0, '0']
+- [ieee802_15_4_oqpsk_phy_0, '0', blocks_null_sink_0, '0']
+- [ieee802_15_4_oqpsk_phy_0, rxout, PHY_SDU_interpreter_0, phy_in]
+- [pcapng_connector_0, PDUout, PHY_SDU_interpreter_0, tcp_in]
+- [pcapng_connector_0, PDUout, foo_wireshark_connector_0, in]
+- [pcapng_connector_0, TCPout, blocks_socket_pdu_0_0, pdus]
+
+metadata:
+  file_format: 1

@@ -1,4 +1,5 @@
 build/*
+cmake-build-debug/*
 *.pyc
 contiki/obj_sky/*
 .cproject

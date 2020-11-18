@@ -1,0 +1,190 @@
+options:
+  parameters:
+    author: semulate
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: phy_message_handler_test
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: IEEE802.15.4 PHY Message Handler Module Test
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: bandwidth
+  id: variable
+  parameters:
+    comment: ''
+    value: '3000000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [483, 19]
+    rotation: 0
+    state: enabled
+- name: center_freq
+  id: variable
+  parameters:
+    comment: ''
+    value: 2405e6
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [281, 9]
+    rotation: 0
+    state: enabled
+- name: frequency
+  id: variable
+  parameters:
+    comment: ''
+    value: '2480000000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [181, 9]
+    rotation: 0
+    state: enabled
+- name: rx_gain
+  id: variable
+  parameters:
+    comment: ''
+    value: '60'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [666, 11]
+    rotation: 0
+    state: enabled
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '4000000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [380, 21]
+    rotation: 0
+    state: enabled
+- name: tx_gain
+  id: variable
+  parameters:
+    comment: ''
+    value: '60'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [583, 10]
+    rotation: 0
+    state: enabled
+- name: analog_noise_source_x_0
+  id: analog_noise_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: '1'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_type: analog.GR_GAUSSIAN
+    seed: '0'
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [109, 361]
+    rotation: 0
+    state: true
+- name: blocks_message_strobe_0
+  id: blocks_message_strobe
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    msg: pmt.intern("TEST")
+    period: '1000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [133, 117]
+    rotation: 0
+    state: true
+- name: digital_probe_mpsk_snr_est_c_0
+  id: digital_probe_mpsk_snr_est_c
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha: '0.001'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    msg_nsamples: '100'
+    type: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [293, 360]
+    rotation: 0
+    state: enabled
+- name: ieee802_15_4_phy_msg_handler_0
+  id: ieee802_15_4_phy_msg_handler
+  parameters:
+    affinity: ''
+    alias: ''
+    bw0: bandwidth
+    center_freq0: frequency
+    comment: ''
+    debug: 'False'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    rxg: rx_gain
+    samp_rate: samp_rate
+    txg: tx_gain
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [380, 183]
+    rotation: 0
+    state: true
+
+connections:
+- [analog_noise_source_x_0, '0', digital_probe_mpsk_snr_est_c_0, '0']
+- [blocks_message_strobe_0, strobe, ieee802_15_4_phy_msg_handler_0, phy_in]
+- [blocks_message_strobe_0, strobe, ieee802_15_4_phy_msg_handler_0, tcp_in]
+- [digital_probe_mpsk_snr_est_c_0, signal, ieee802_15_4_phy_msg_handler_0, signal_strength]
+
+metadata:
+  file_format: 1

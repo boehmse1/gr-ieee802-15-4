@@ -10,7 +10,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: transceiver_PCAPNG_OQPSK
+    id: transceiver_OQPSK_PCAPNG
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -36,7 +36,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '3000000'
+    value: '2000000'
   states:
     bus_sink: false
     bus_source: false
@@ -48,24 +48,24 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '2480000000'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [185, 83]
-    rotation: 0
-    state: enabled
-- name: frequency_0
-  id: variable
-  parameters:
-    comment: ''
     value: 2405e6
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [96, 83]
+    rotation: 0
+    state: enabled
+- name: frequency_26
+  id: variable
+  parameters:
+    comment: ''
+    value: '2480000000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [185, 83]
     rotation: 0
     state: enabled
 - name: rx_gain
@@ -78,6 +78,42 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [175, 137]
+    rotation: 0
+    state: enabled
+- name: rx_gain_amp
+  id: variable
+  parameters:
+    comment: ''
+    value: '14'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [677, 47]
+    rotation: 0
+    state: enabled
+- name: rx_gain_lna
+  id: variable
+  parameters:
+    comment: ''
+    value: '40'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [785, 36]
+    rotation: 0
+    state: enabled
+- name: rx_gain_vga
+  id: variable
+  parameters:
+    comment: ''
+    value: '12'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [891, 40]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -104,49 +140,6 @@ blocks:
     coordinate: [96, 137]
     rotation: 0
     state: enabled
-- name: PHY_SDU_interpreter_0
-  id: PHY_SDU_interpreter
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    parameter_0: '1'
-    parameter_2: '1'
-    parameter_3: '1'
-    parameter_4: '1'
-    parameter_4_0: '0'
-    parameter_s: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [420, 245]
-    rotation: 180
-    state: true
-- name: analog_sig_source_x_0
-  id: analog_sig_source_x
-  parameters:
-    affinity: ''
-    alias: ''
-    amp: '1'
-    comment: ''
-    freq: '1'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    offset: '0'
-    phase: '0'
-    samp_rate: samp_rate
-    type: complex
-    waveform: analog.GR_COS_WAVE
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [95, 233]
-    rotation: 0
-    state: true
 - name: blocks_file_sink_0_0
   id: blocks_file_sink
   parameters:
@@ -175,7 +168,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [737, 39]
+    coordinate: [834, 395]
     rotation: 0
     state: enabled
 - name: blocks_null_sink_0
@@ -192,7 +185,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [711, 409]
+    coordinate: [828, 295]
     rotation: 0
     state: true
 - name: blocks_socket_pdu_0_0
@@ -207,12 +200,12 @@ blocks:
     mtu: '512'
     port: '4242'
     tcp_no_delay: 'False'
-    type: TCP_CLIENT
+    type: TCP_SERVER
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [421, 44]
+    coordinate: [437, 55]
     rotation: 180
     state: enabled
 - name: foo_wireshark_connector_0
@@ -224,49 +217,34 @@ blocks:
     debug: 'False'
     maxoutbuf: '0'
     minoutbuf: '0'
-    tech: '147'
+    tech: '195'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [691, 154]
     rotation: 0
-    state: true
-- name: ieee802_15_4_oqpsk_phy_0
-  id: ieee802_15_4_oqpsk_phy
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [409, 409]
-    rotation: 0
     state: enabled
-- name: ieee802_15_4_phy_msg_handler_0
-  id: ieee802_15_4_phy_msg_handler
+- name: ieee802_15_4_PHY_0
+  id: ieee802_15_4_PHY
   parameters:
     affinity: ''
     alias: ''
-    bw0: '0'
-    center_freq0: '0'
+    bandwidth: bandwidth
+    center_freq: frequency_26
     comment: ''
-    debug: 'False'
+    debug: '1'
     maxoutbuf: '0'
     minoutbuf: '0'
-    rxg: '0'
-    samp_rate: '0'
-    txg: '0'
+    rx_gain: rx_gain
+    samp_rate: samp_rate
+    tx_gain: tx_gain
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [839, 261]
-    rotation: 180
+    coordinate: [425, 268]
+    rotation: 0
     state: true
 - name: note_1
   id: note
@@ -295,22 +273,152 @@ blocks:
     bus_structure: null
     coordinate: [422, 147]
     rotation: 0
+    state: enabled
+- name: qtgui_waterfall_sink_x_0
+  id: qtgui_waterfall_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    axislabels: 'True'
+    bw: bandwidth
+    color1: '0'
+    color10: '0'
+    color2: '0'
+    color3: '0'
+    color4: '0'
+    color5: '0'
+    color6: '0'
+    color7: '0'
+    color8: '0'
+    color9: '0'
+    comment: ''
+    fc: frequency_26
+    fftsize: '1024'
+    freqhalf: 'True'
+    grid: 'False'
+    gui_hint: ''
+    int_max: '10'
+    int_min: '-140'
+    label1: ''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    nconnections: '1'
+    showports: 'False'
+    type: complex
+    update_time: '0.10'
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [501, 416]
+    rotation: 0
+    state: true
+- name: soapy_source_0
+  id: soapy_source
+  parameters:
+    affinity: ''
+    agc0: 'False'
+    agc1: 'False'
+    alias: ''
+    amp_gain0: rx_gain_amp
+    ant0: TX/RX
+    ant1: RX2
+    args: '"hackrf=0"'
+    balance0: '0'
+    balance1: '0'
+    bw0: bandwidth
+    bw1: '0'
+    center_freq0: frequency_26
+    center_freq1: '0'
+    clock_rate: '0'
+    clock_source: ''
+    comment: ''
+    correction0: '0'
+    correction1: '0'
+    dc_offset0: '0'
+    dc_offset1: '0'
+    dc_removal0: 'False'
+    dc_removal1: 'True'
+    dev: driver=rtlsdr
+    devname: hackrf
+    gain_mode0: Specific
+    gain_mode1: Overall
+    ifgr_gain: '59'
+    lna_gain0: rx_gain_lna
+    lna_gain1: '10'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    mix_gain0: '10'
+    nchan: '1'
+    nco_freq0: '0'
+    nco_freq1: '0'
+    overall_gain0: '10'
+    overall_gain1: '10'
+    pga_gain0: '24'
+    pga_gain1: '24'
+    rfgr_gain: '9'
+    rxvga1_gain: '5'
+    rxvga2_gain: '0'
+    samp_rate: samp_rate
+    sdrplay_agc_setpoint: '-30'
+    sdrplay_biastee: 'False'
+    sdrplay_dabnotch: 'False'
+    sdrplay_if_mode: Zero-IF
+    sdrplay_rfnotch: 'False'
+    settings0: ''
+    settings1: ''
+    stream_args: ''
+    tia_gain0: '0'
+    tia_gain1: '0'
+    tune_args0: ''
+    tune_args1: ''
+    tuner_gain0: '10'
+    type: fc32
+    vga_gain0: rx_gain_vga
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [117, 294]
+    rotation: 0
     state: true
 
 connections:
-- [PHY_SDU_interpreter_0, conf_out, pcapng_connector_0, PDUin]
-- [PHY_SDU_interpreter_0, data_out, ieee802_15_4_oqpsk_phy_0, txin]
-- [PHY_SDU_interpreter_0, manag_rx_out, blocks_message_debug_0, print]
-- [PHY_SDU_interpreter_0, manag_tx_out, blocks_message_debug_0, print]
-- [analog_sig_source_x_0, '0', PHY_SDU_interpreter_0, '0']
-- [analog_sig_source_x_0, '0', ieee802_15_4_oqpsk_phy_0, '0']
 - [blocks_socket_pdu_0_0, pdus, pcapng_connector_0, TCPin]
 - [foo_wireshark_connector_0, '0', blocks_file_sink_0_0, '0']
-- [ieee802_15_4_oqpsk_phy_0, '0', blocks_null_sink_0, '0']
-- [ieee802_15_4_oqpsk_phy_0, rxout, PHY_SDU_interpreter_0, phy_in]
-- [pcapng_connector_0, PDUout, PHY_SDU_interpreter_0, tcp_in]
+- [ieee802_15_4_PHY_0, '0', blocks_null_sink_0, '0']
+- [ieee802_15_4_PHY_0, sduout, blocks_message_debug_0, print_pdu]
+- [ieee802_15_4_PHY_0, sduout, foo_wireshark_connector_0, in]
+- [ieee802_15_4_PHY_0, sduout, pcapng_connector_0, PDUin]
+- [ieee802_15_4_PHY_0, txctrl, soapy_source_0, command]
 - [pcapng_connector_0, PDUout, foo_wireshark_connector_0, in]
+- [pcapng_connector_0, PDUout, ieee802_15_4_PHY_0, sduin]
 - [pcapng_connector_0, TCPout, blocks_socket_pdu_0_0, pdus]
+- [qtgui_waterfall_sink_x_0, freq, blocks_message_debug_0, print]
+- [soapy_source_0, '0', ieee802_15_4_PHY_0, '0']
+- [soapy_source_0, '0', qtgui_waterfall_sink_x_0, '0']
 
 metadata:
   file_format: 1

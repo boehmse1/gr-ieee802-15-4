@@ -46,7 +46,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [496, 16]
+    coordinate: [496, 15]
     rotation: 0
     state: enabled
 - name: center_freq
@@ -145,7 +145,7 @@ blocks:
     comment: ''
     label: sduout
     num_streams: '1'
-    optional: 'False'
+    optional: 'True'
     type: message
     vlen: '1'
   states:
@@ -181,7 +181,7 @@ blocks:
     comment: ''
     label: txctrl
     num_streams: '1'
-    optional: 'False'
+    optional: 'True'
     type: message
     vlen: '1'
   states:
@@ -199,7 +199,7 @@ blocks:
     comment: ''
     label: rxctrl
     num_streams: '1'
-    optional: 'False'
+    optional: 'True'
     type: message
     vlen: '1'
   states:
@@ -219,7 +219,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     num_streams: '1'
-    optional: 'False'
+    optional: 'True'
     type: message
     vlen: '1'
   states:

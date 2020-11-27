@@ -75,7 +75,7 @@ blocks:
     label: Debug
     short_id: ''
     type: intx
-    value: '0'
+    value: '1'
   states:
     bus_sink: false
     bus_source: false
@@ -124,7 +124,7 @@ blocks:
     bw0: bandwidth
     center_freq0: center_freq
     comment: ''
-    debug: 'False'
+    debug: bool(debug)
     maxoutbuf: '0'
     minoutbuf: '0'
     rxg: rx_gain
@@ -153,6 +153,24 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [991, 230]
+    rotation: 0
+    state: true
+- name: pad_sink_0_0
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: rxout
+    num_streams: '1'
+    optional: 'True'
+    type: message
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [981, 277]
     rotation: 0
     state: true
 - name: pad_sink_1
@@ -305,6 +323,7 @@ connections:
 - [digital_probe_mpsk_snr_est_c_0, signal, ieee802_15_4_phy_msg_handler_0, signal_strength]
 - [ieee802_15_4_oqpsk_phy_0, '0', pad_sink_1, '0']
 - [ieee802_15_4_oqpsk_phy_0, rxout, ieee802_15_4_phy_msg_handler_0, phy_in]
+- [ieee802_15_4_oqpsk_phy_0, rxout, pad_sink_0_0, in]
 - [ieee802_15_4_phy_msg_handler_0, conf_out, pad_sink_0, in]
 - [ieee802_15_4_phy_msg_handler_0, data_out, ieee802_15_4_oqpsk_phy_0, txin]
 - [ieee802_15_4_phy_msg_handler_0, manag_rx_out, pad_sink_3, in]

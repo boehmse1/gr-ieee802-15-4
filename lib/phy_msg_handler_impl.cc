@@ -287,7 +287,7 @@ namespace gr {
                       break;
                   }
                   case phyLQI: {
-                      phy_msg_handler_impl::setSampling_rate(msg->x.set_req.value.SamplingRate);
+                      phy_msg_handler_impl::setLQI(msg->x.set_req.value.LQI);
                       conf.type = PLME_SET_CONFIRM;
                       conf.x.set_conf.attribute = phyLQI;
                       conf.x.set_conf.status = phy_READ_ONLY;

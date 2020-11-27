@@ -110,7 +110,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '14'
+    value: '0'
   states:
     bus_sink: false
     bus_source: false
@@ -122,7 +122,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '40'
+    value: '42'
   states:
     bus_sink: false
     bus_source: false
@@ -134,7 +134,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '12'
+    value: '20'
   states:
     bus_sink: false
     bus_source: false
@@ -146,7 +146,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '2000000'
+    value: '10000000'
   states:
     bus_sink: false
     bus_source: false
@@ -199,6 +199,25 @@ blocks:
     coordinate: [1001, 162]
     rotation: 0
     state: enabled
+- name: analog_noise_source_x_0
+  id: analog_noise_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    amp: '1'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_type: analog.GR_GAUSSIAN
+    seed: '0'
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [40, 565]
+    rotation: 0
+    state: disabled
 - name: blocks_file_sink_0
   id: blocks_file_sink
   parameters:
@@ -214,9 +233,22 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [862, 298]
+    coordinate: [874, 247]
     rotation: 0
     state: enabled
+- name: blocks_message_debug_0
+  id: blocks_message_debug
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [358, 611]
+    rotation: 0
+    state: true
 - name: blocks_message_strobe_0
   id: blocks_message_strobe
   parameters:
@@ -234,6 +266,25 @@ blocks:
     coordinate: [72, 163]
     rotation: 0
     state: enabled
+- name: blocks_null_source_0
+  id: blocks_null_source
+  parameters:
+    affinity: ''
+    alias: ''
+    bus_structure_source: '[[0,],]'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_outputs: '1'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [92, 642]
+    rotation: 0
+    state: enabled
 - name: blocks_socket_pdu_0_0
   id: blocks_socket_pdu
   parameters:
@@ -246,14 +297,32 @@ blocks:
     mtu: '10000'
     port: '52001'
     tcp_no_delay: 'False'
-    type: UDP_SERVER
+    type: TCP_SERVER
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [360, 84.0]
     rotation: 180
-    state: enabled
+    state: disabled
+- name: digital_probe_mpsk_snr_est_c_0
+  id: digital_probe_mpsk_snr_est_c
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha: '0.001'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    msg_nsamples: '100000'
+    type: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [549, 750]
+    rotation: 0
+    state: disabled
 - name: foo_packet_pad2_0
   id: foo_packet_pad2
   parameters:
@@ -273,14 +342,14 @@ blocks:
     bus_structure: null
     coordinate: [380, 502]
     rotation: 180
-    state: true
+    state: disabled
 - name: foo_wireshark_connector_0
   id: foo_wireshark_connector
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    debug: 'False'
+    debug: 'True'
     maxoutbuf: '0'
     minoutbuf: '0'
     tech: '195'
@@ -288,7 +357,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [647, 265]
+    coordinate: [632, 251]
     rotation: 0
     state: enabled
 - name: ieee802_15_4_mac_0
@@ -410,7 +479,7 @@ blocks:
     ant7: ''
     ant8: ''
     ant9: ''
-    args: '""'
+    args: '"hackrf=0"'
     bb_gain0: rx_gain_vga_bb
     bb_gain1: '20'
     bb_gain10: '20'
@@ -633,7 +702,7 @@ blocks:
     bus_structure: null
     coordinate: [653, 340]
     rotation: 0
-    state: true
+    state: enabled
 - name: osmosdr_source_0
   id: osmosdr_source
   parameters:
@@ -671,7 +740,7 @@ blocks:
     ant7: ''
     ant8: ''
     ant9: ''
-    args: '""'
+    args: '"hackrf=0"'
     bb_gain0: rx_gain_vga_bb
     bb_gain1: '20'
     bb_gain10: '20'
@@ -1071,23 +1140,172 @@ blocks:
     coordinate: [658, 514]
     rotation: 0
     state: enabled
+- name: qtgui_freq_sink_x_0_0
+  id: qtgui_freq_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    autoscale: 'False'
+    average: '0.05'
+    axislabels: 'True'
+    bw: bandwidth
+    color1: '"blue"'
+    color10: '"dark blue"'
+    color2: '"red"'
+    color3: '"green"'
+    color4: '"black"'
+    color5: '"cyan"'
+    color6: '"magenta"'
+    color7: '"yellow"'
+    color8: '"dark red"'
+    color9: '"dark green"'
+    comment: ''
+    ctrlpanel: 'False'
+    fc: frequency_26
+    fftsize: '1024'
+    freqhalf: 'True'
+    grid: 'False'
+    gui_hint: ''
+    label: Relative Gain
+    label1: ''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    nconnections: '1'
+    showports: 'True'
+    tr_chan: '0'
+    tr_level: '0.0'
+    tr_mode: qtgui.TRIG_MODE_FREE
+    tr_tag: '""'
+    type: complex
+    units: dB
+    update_time: '0.10'
+    width1: '1'
+    width10: '1'
+    width2: '1'
+    width3: '1'
+    width4: '1'
+    width5: '1'
+    width6: '1'
+    width7: '1'
+    width8: '1'
+    width9: '1'
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+    ymax: '10'
+    ymin: '-140'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [664, 621]
+    rotation: 0
+    state: enabled
+- name: qtgui_waterfall_sink_x_0
+  id: qtgui_waterfall_sink_x
+  parameters:
+    affinity: ''
+    alias: ''
+    alpha1: '1.0'
+    alpha10: '1.0'
+    alpha2: '1.0'
+    alpha3: '1.0'
+    alpha4: '1.0'
+    alpha5: '1.0'
+    alpha6: '1.0'
+    alpha7: '1.0'
+    alpha8: '1.0'
+    alpha9: '1.0'
+    axislabels: 'True'
+    bw: samp_rate
+    color1: '0'
+    color10: '0'
+    color2: '0'
+    color3: '0'
+    color4: '0'
+    color5: '0'
+    color6: '0'
+    color7: '0'
+    color8: '0'
+    color9: '0'
+    comment: ''
+    fc: frequency_26
+    fftsize: '1024'
+    freqhalf: 'True'
+    grid: 'False'
+    gui_hint: ''
+    int_max: '10'
+    int_min: '-140'
+    label1: ''
+    label10: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    label5: ''
+    label6: ''
+    label7: ''
+    label8: ''
+    label9: ''
+    legend: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    name: '""'
+    nconnections: '1'
+    showports: 'False'
+    type: complex
+    update_time: '0.10'
+    wintype: firdes.WIN_BLACKMAN_hARRIS
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [914, 501]
+    rotation: 0
+    state: true
 
 connections:
+- [analog_noise_source_x_0, '0', ieee802_15_4_oqpsk_phy_0, '0']
 - [blocks_message_strobe_0, strobe, ieee802_15_4_rime_stack_0, bcin]
+- [blocks_null_source_0, '0', ieee802_15_4_oqpsk_phy_0, '0']
 - [blocks_socket_pdu_0_0, pdus, ieee802_15_4_rime_stack_0, bcin]
+- [digital_probe_mpsk_snr_est_c_0, signal, blocks_message_debug_0, print]
 - [foo_packet_pad2_0, '0', ieee802_15_4_oqpsk_phy_0, '0']
 - [foo_wireshark_connector_0, '0', blocks_file_sink_0, '0']
 - [ieee802_15_4_mac_0, app out, ieee802_15_4_rime_stack_0, fromMAC]
-- [ieee802_15_4_mac_0, pdu out, foo_wireshark_connector_0, in]
+- [ieee802_15_4_mac_0, pdu out, blocks_message_debug_0, print_pdu]
 - [ieee802_15_4_mac_0, pdu out, ieee802_15_4_oqpsk_phy_0, txin]
 - [ieee802_15_4_oqpsk_phy_0, '0', foo_packet_pad2_0, '0']
 - [ieee802_15_4_oqpsk_phy_0, '0', osmosdr_sink_0_0, '0']
 - [ieee802_15_4_oqpsk_phy_0, '0', qtgui_freq_sink_x_0, '0']
+- [ieee802_15_4_oqpsk_phy_0, rxout, blocks_message_debug_0, print]
 - [ieee802_15_4_oqpsk_phy_0, rxout, foo_wireshark_connector_0, in]
 - [ieee802_15_4_oqpsk_phy_0, rxout, ieee802_15_4_mac_0, pdu in]
 - [ieee802_15_4_rime_stack_0, bcout, blocks_socket_pdu_0_0, pdus]
+- [ieee802_15_4_rime_stack_0, toMAC, blocks_message_debug_0, print_pdu]
 - [ieee802_15_4_rime_stack_0, toMAC, ieee802_15_4_mac_0, app in]
+- [osmosdr_source_0, '0', digital_probe_mpsk_snr_est_c_0, '0']
 - [osmosdr_source_0, '0', ieee802_15_4_oqpsk_phy_0, '0']
+- [osmosdr_source_0, '0', qtgui_freq_sink_x_0_0, '0']
+- [osmosdr_source_0, '0', qtgui_waterfall_sink_x_0, '0']
 
 metadata:
   file_format: 1

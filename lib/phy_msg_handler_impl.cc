@@ -54,9 +54,9 @@ namespace gr {
         message_port_register_out(pmt::mp("manag_rx_out"));
         message_port_register_out(pmt::mp("data_out"));
         message_port_register_out(pmt::mp("conf_out"));
-        set_msg_handler(pmt::mp("tcp_in"),boost::bind(&phy_msg_handler_impl::handle_pdu,this,_1));
-        set_msg_handler(pmt::mp("phy_in"),boost::bind(&phy_msg_handler_impl::handle_phymsg,this,_1));
-        set_msg_handler(pmt::mp("signal_strength"),boost::bind(&phy_msg_handler_impl::handle_signalmsg,this,_1));
+        set_msg_handler(pmt::mp("tcp_in"),[this](pmt::pmt_t msg) { this->handle_pdu(msg); });
+        set_msg_handler(pmt::mp("phy_in"),[this](pmt::pmt_t msg) { this->handle_phymsg(msg); });
+        set_msg_handler(pmt::mp("signal_strength"),[this](pmt::pmt_t msg) { this->handle_signalmsg(msg); });
         phy_msg_handler_impl::setCenter_freq(center_freq);
         phy_msg_handler_impl::setCCAModeAttr(1);// ed mit EDThreshold.
         phy_msg_handler_impl::setChanSupAttr(0);

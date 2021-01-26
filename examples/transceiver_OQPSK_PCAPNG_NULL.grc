@@ -89,7 +89,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [610, 16]
+    coordinate: [24, 262]
     rotation: 0
     state: enabled
 - name: rx_gain_lna_if
@@ -101,7 +101,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [715, 16]
+    coordinate: [685, 14]
     rotation: 0
     state: enabled
 - name: rx_gain_vga_bb
@@ -113,7 +113,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [812, 14]
+    coordinate: [569, 16]
     rotation: 0
     state: enabled
 - name: samp_rate
@@ -149,7 +149,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [981, 24]
+    coordinate: [17, 201]
     rotation: 0
     state: enabled
 - name: tx_gain_vga_if
@@ -161,7 +161,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1084, 24]
+    coordinate: [120, 201]
     rotation: 0
     state: enabled
 - name: blocks_message_debug_0
@@ -174,7 +174,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1059, 356]
+    coordinate: [681, 86]
     rotation: 0
     state: enabled
 - name: blocks_null_sink_0
@@ -191,9 +191,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1300, 67]
+    coordinate: [666, 288]
     rotation: 0
-    state: disabled
+    state: true
 - name: blocks_null_source_0
   id: blocks_null_source
   parameters:
@@ -210,7 +210,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [250, 164]
+    coordinate: [209, 304]
     rotation: 0
     state: true
 - name: blocks_socket_pdu_0_0
@@ -230,7 +230,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [431, 110]
+    coordinate: [410, 44]
     rotation: 0
     state: enabled
 - name: foo_pad_tagged_stream_0
@@ -249,7 +249,7 @@ blocks:
     bus_structure: null
     coordinate: [1019, 263]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: ieee802_15_4_PHY_0
   id: ieee802_15_4_PHY
   parameters:
@@ -268,7 +268,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [414, 290]
+    coordinate: [393, 224]
     rotation: 0
     state: true
 - name: note_1
@@ -916,7 +916,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [419, 205]
+    coordinate: [398, 139]
     rotation: 180
     state: enabled
 - name: soapy_sink_0
@@ -972,7 +972,7 @@ blocks:
     bus_structure: null
     coordinate: [1225, 144]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: soapy_source_0
   id: soapy_source
   parameters:
@@ -1050,11 +1050,10 @@ connections:
 - [foo_pad_tagged_stream_0, '0', soapy_sink_0, '0']
 - [ieee802_15_4_PHY_0, '0', blocks_null_sink_0, '0']
 - [ieee802_15_4_PHY_0, '0', foo_pad_tagged_stream_0, '0']
-- [ieee802_15_4_PHY_0, rxctrl, blocks_message_debug_0, print]
+- [ieee802_15_4_PHY_0, '0', soapy_sink_0, '0']
 - [ieee802_15_4_PHY_0, rxctrl, osmosdr_source_0, command]
 - [ieee802_15_4_PHY_0, rxctrl, soapy_sink_0, command]
 - [ieee802_15_4_PHY_0, sduout, pcapng_connector_0, PDUin]
-- [ieee802_15_4_PHY_0, txctrl, blocks_message_debug_0, print]
 - [ieee802_15_4_PHY_0, txctrl, soapy_source_0, command]
 - [osmosdr_source_0, '0', ieee802_15_4_PHY_0, '0']
 - [pcapng_connector_0, PDUout, blocks_message_debug_0, print_pdu]
